@@ -1,5 +1,5 @@
 #!/bin/bash -x
 
-[ ! -d '/tmp/cache' ] && mkdir -p /tmp/cache
+[ ! -d '/tmp/cache' ] && mkdir -p /tmp/cache && ln -s /tmp/cache ./.next/cache
 
-npm run start --loglevel verbose --cache /tmp/cache
+node .next/standalone/server.js 
