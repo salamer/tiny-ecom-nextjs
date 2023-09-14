@@ -4,14 +4,13 @@ import { Leapcell, Record } from "@leapcell/leapcell-js";
 
 async function getData(id: string) {
   const api = new Leapcell({
-    apiKey: "lpcl_3079002420.21e580a433ce0b1cae979ddfd8b33021",
-    endpoint: "http://localhost:8080",
+    apiKey: process.env.LEAPCELL_API_KEY!,
   });
   const table = api
     .repo("salamer/myblog")
-    .table("tbl1702010602858938368", "name");
+    .table("tbl1702369503563026432", "name");
   const res = await table.records.findById(id);
-  return res.record;
+  return res;
 }
 
 export default async function Page({
@@ -20,6 +19,7 @@ export default async function Page({
   params: { id: string };
 }) {
   const data = await getData(id);
+  const skus = data.fields["SKU"] as string[] || [];
   return (
     <div>
       <Head>
@@ -43,7 +43,7 @@ export default async function Page({
             </nav>
 
             <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-                {data.fields["SKU"] && data.fields["SKU"].map((item) => {
+                {skus.map((item) => {
                     return (
                         <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
                             <img src={item} alt="Two each of gray, white, and black shirts laying flat."
