@@ -2,5 +2,4 @@
 
 [ ! -d '/tmp/cache' ] && mkdir -p /tmp/cache
 
-# node .next/standalone/server.js 
-npm run start
+node .next/standalone/server.js 
