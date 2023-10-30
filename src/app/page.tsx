@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Leapcell } from "@leapcell/leapcell-js";
+import Script from "next/script";
 
 async function getData() {
   const api = new Leapcell({
@@ -22,7 +23,7 @@ export default async function Home() {
   return (
     <body>
       <Head>
-        <script src="https://cdn.tailwindcss.com"></script>
+        <Script src="https://cdn.tailwindcss.com"></Script>
       </Head>
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
